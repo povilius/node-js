@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="fruit-list"></ul>
+  <ul id="todos-list"></ul>
+  <ul id="cars-list"></ul>
+
+    <script>
+      const renderFruitList = (fruits) => {
+        const list = document.getElementById("fruit-list")
+
+        fruits.forEach((fruit) => {
+          const fruitItem = document.createElement("li")
+          fruitItem.textContent = fruit
+          list.append(fruitItem)
+        })
+      }
+
+      fetch("http://localhost:3000/fruits")
+        .then((resp) => resp.json())
+        .then((response) => {
+          renderFruitList(response)
+        })
+
+        // Pirmos dalies pabaiga
+
+        const renderTodosList = (todos) => {
+        const list = document.getElementById("todos-list")
+
+        todos.forEach((todo) => {
+          const todoItem = document.createElement("li")
+          todoItem.textContent = todo.title
+          list.append(todoItem)
+        })
+      }
+
+      fetch("http://localhost:3000/todos")
+        .then((resp) => resp.json())
+        .then((response) => {
+          renderTodosList(response)
+        })
+        
+        // Antros dalies pabaiga
+
+        const renderCarsList = (cars) => {
+        const list = document.getElementById("cars-list")
+
+        cars.forEach((car) => {
+          const carItem = document.createElement("li")
+          carItem.textContent = car
+          list.append(carItem)
+        })
+      }
+
+      fetch("http://localhost:3000/cars")
+        .then((resp) => resp.json())
+        .then((response) => {
+          renderCarsList(response)
+        })
+        
+    </script>
+</body>
+</html>
