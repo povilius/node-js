@@ -7,4 +7,5 @@
 - app.listen(3000, () => console.log("The server is running on port 3000")); - aplikacijos klausymo paleidimas
 - npm install cors; const cors = require("cors")
 - module.exports = data; // same as export default data
-- Įrašyti Nodemon - "npm i nodemon --save-dev", package.json faile prie "scripts" parašyti - ""dev": "nodemon app.js" ir tada "npm run dev"
+- Įrašyti Nodemon - "npm i nodemon --save-dev", package.json faile prie "scripts" parašyti - "dev": "nodemon app.js" ir tada "npm run dev"
+- DotENV įsirašyti reikia "npm i dotenv"
