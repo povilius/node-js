@@ -1,15 +1,15 @@
 const express = require("express")
 const cors = require("cors")
 const { MongoClient } = require('mongodb')
+require("dotenv").config()
 
-const URI = "mongodb+srv://TaskStudents:TaskStudents@taskstudent.rtc3k9h.mongodb.net/?retryWrites=true&w=majority"
+const port = process.env.PORT || 8080
+const URI = process.env.DB_CONNECTION_STRING
 const client = new MongoClient(URI)
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-
-const port = 3000
 
 // app.get("/", async (req, res) => {
 //   const con = await client.connect()
@@ -29,10 +29,22 @@ app.get("/", async (req, res) => {
   }
 })
 
+// app.post("/", async (req, res) => {
+//   try {
+//     const con = await client.connect()
+//     const data = await con.db("StudentsDB").collection("Students").insertOne({name: "Petras", surname: "Burokas", age: "25", university: "Vilniaus kolegija"})
+//     await con.close()
+//     res.send(data)
+//   } catch (err) {
+//     res.status(500).send({err})
+//   }
+// })
+
 app.post("/", async (req, res) => {
   try {
+    const student = req.body
     const con = await client.connect()
-    const data = await con.db("StudentsDB").collection("Students").insertOne({name: "Petras", surname: "Burokas", age: "25", university: "Vilniaus kolegija"})
+    const data = await con.db("StudentsDB").collection("Students").insertOne(student)
     await con.close()
     res.send(data)
   } catch (err) {

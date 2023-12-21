@@ -1,9 +1,8 @@
-require("dotenv").config()
-const port = process.env.PORT || 8080
+
+const port = 3000
 const express = require('express')
 const cors = require('cors')
 const data = require('./data')
-
 
 const app = express()
 app.use(cors())
